@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /impressum
+
+Sitemap: https://taner-care.de/sitemap.xml
