@@ -1,3 +1,4 @@
+// 6) app/kontakt/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";
 import ContactForm from "@/components/contact/ContactForm";
@@ -43,7 +44,6 @@ export const metadata: Metadata = {
 export default function KontaktPage() {
   return (
     <div className="bg-bgLight">
-      {/* Hero */}
       <section className="border-b border-bgLight bg-white">
         <div className="container grid gap-8 py-12 md:grid-cols-[1.2fr,1fr] md:items-center md:py-16">
           <div>
@@ -78,7 +78,6 @@ export default function KontaktPage() {
             </div>
           </div>
 
-          {/* Hero-Bild rechts */}
           <div className="hidden md:block">
             <div className="relative h-64 md:h-80 overflow-hidden rounded-2xl bg-bgLight shadow-soft">
               <Image
@@ -93,12 +92,9 @@ export default function KontaktPage() {
         </div>
       </section>
 
-      {/* Formular + Zusatzinfos */}
       <section className="container grid gap-8 py-12 md:grid-cols-[1.3fr,1fr] md:py-16">
-        {/* Kontaktformular */}
         <ContactForm />
 
-        {/* Zusatzbox rechts */}
         <aside className="space-y-4 text-sm text-grayMid md:text-base">
           <div className="rounded-2xl bg-white p-5 shadow-soft">
             <h2 className="text-sm font-semibold text-textDark md:text-base">
@@ -111,14 +107,19 @@ export default function KontaktPage() {
             </p>
             <p className="mt-3">
               <span className="font-semibold">Telefon:</span>{" "}
-              <a href="tel:+4915201630200" className="text-primary">
-                +49 1520 1630200
+              <a href="tel:+491728804949" className="text-primary">
+                +49 172 8804949
               </a>
             </p>
             <p className="mt-1">
               <span className="font-semibold">E-Mail:</span>{" "}
-              <a href="mailto:info@care.de" className="text-primary">
-                info@care.de
+              <a href="mailto:info@taner-care.de" className="text-primary">
+                info@taner-care.de
+              </a>
+              <br />
+              <span className="font-semibold">E-Mail:</span>{" "}
+              <a href="mailto:dilara@taner-care.de" className="text-primary">
+                dilara@taner-care.de
               </a>
             </p>
             <p className="mt-3 text-xs text-grayMid">

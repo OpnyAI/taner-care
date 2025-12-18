@@ -1,69 +1,125 @@
+// components/layout/Footer.tsx
 import Link from "next/link";
 
-export default function Footer() {
-  const year = new Date().getFullYear();
+const PFLEGEBOXEN_EXTERNAL_URL = "https://tanercare.boxkonfigurator.de/";
 
+export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-bgLight bg-bgLight/60">
-      <div className="container grid gap-8 py-10 md:grid-cols-3">
-        {/* Beschreibung */}
+    <footer className="border-t border-bgLight bg-white">
+      <div className="container grid gap-10 py-12 md:grid-cols-3">
+        {/* Spalte 1 – Kurzbeschreibung */}
         <div>
-          <h3 className="text-sm font-semibold text-primary">
-            TANER CARE GRUPPE
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-grayMid">
+          <span className="text-sm font-semibold tracking-wide text-primary">
+            TANER CARE
+          </span>
+          <p className="mt-3 text-sm text-grayMid">
             Alltagsbegleitung, Pflegeberatung und kostenfreie Pflegehilfsmittel
             – aus einer Hand für pflegebedürftige Menschen und ihre Angehörigen.
           </p>
         </div>
 
-        {/* Navigation */}
+        {/* Spalte 2 – Seiten */}
         <div>
-          <h4 className="text-sm font-semibold text-textDark">Seiten</h4>
-          <div className="mt-2 flex flex-col gap-1 text-sm text-grayMid">
-            <Link href="/">Startseite</Link>
-            <Link href="/alltagsbegleitung">Alltagsbegleitung</Link>
-            <Link href="/pflegeberatung">Pflegeberatung §37.3</Link>
-            <Link href="/pflegeboxen">Pflegeboxen</Link>
-            <Link href="/ueber-uns">Über uns</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/kontakt">Kontakt</Link>
-          </div>
+          <h3 className="text-sm font-semibold text-textDark">Seiten</h3>
+          <ul className="mt-3 space-y-2 text-sm text-grayMid">
+            <li>
+              <Link href="/" className="hover:text-primary">
+                Startseite
+              </Link>
+            </li>
+            <li>
+              <Link href="/alltagsbegleitung" className="hover:text-primary">
+                Alltagsbegleitung
+              </Link>
+            </li>
+            <li>
+              <Link href="/pflegeberatung" className="hover:text-primary">
+                Pflegeberatung §37.3
+              </Link>
+            </li>
+            <li>
+              <Link href="/pflegeboxen" className="hover:text-primary">
+                Pflegeboxen
+              </Link>
+            </li>
+            <li>
+              <Link href="/ueber-uns" className="hover:text-primary">
+                Über uns
+              </Link>
+            </li>
+            <li>
+              <Link href="/faq" className="hover:text-primary">
+                FAQ
+              </Link>
+            </li>
+          </ul>
         </div>
 
-        {/* Kontakt */}
+        {/* Spalte 3 – Kontakt */}
         <div>
-          <h4 className="text-sm font-semibold text-textDark">Kontakt</h4>
-          <p className="mt-2 text-sm leading-relaxed text-grayMid">
-            TANER CARE GRUPPE
-            <br />
-            Pflege- &amp; Alltagsbegleitung in Wuppertal
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-grayMid">
-            <span className="font-semibold">Telefon:</span>{" "}
-            <a href="tel:+4915201630200" className="text-primary">
-              +49 1520 1630200
+          <h3 className="text-sm font-semibold text-textDark">Kontakt</h3>
+          <div className="mt-3 space-y-2 text-sm text-grayMid">
+            <p className="font-semibold text-textDark">TANER CARE</p>
+            <p>Pflege- &amp; Alltagsbegleitung in Wuppertal</p>
+
+            <p>
+              Telefon:{" "}
+              <a
+                href="tel:+491728804949"
+                className="text-primary hover:underline"
+              >
+                +49 172 8804949
+              </a>
+            </p>
+
+            <p>
+              E-Mail:{" "}
+              <a
+                href="mailto:info@taner-care.de"
+                className="text-primary hover:underline"
+              >
+                info@taner-care.de
+              </a>
+            </p>
+
+            <p>
+              E-Mail:{" "}
+              <a
+                href="mailto:dilara@taner-care.de"
+                className="text-primary hover:underline"
+              >
+                dilara@taner-care.de
+              </a>
+            </p>
+
+            {/* Externer CTA */}
+            <a
+              href={PFLEGEBOXEN_EXTERNAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-primary/90 transition-colors"
+            >
+              Pflegebox beantragen
             </a>
-            <br />
-            <span className="font-semibold">E-Mail:</span>{" "}
-            <a href="mailto:info@care.de" className="text-primary">
-              info@care.de
-            </a>
-          </p>
+          </div>
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Bottom-Bar */}
       <div className="border-t border-bgLight">
-        <div className="container flex flex-col items-center justify-between gap-2 py-4 text-xs text-grayMid md:flex-row">
+        <div className="container flex flex-col items-center justify-between gap-4 py-6 text-xs text-grayMid md:flex-row">
           <span>
-            © {year} TANER CARE GRUPPE – Menschen unterstützen. Wege
-            erleichtern.
+            © {new Date().getFullYear()} TANER CARE – Menschen unterstützen.
+            Wege erleichtern.
           </span>
 
           <div className="flex gap-4">
-            <Link href="/impressum">Impressum</Link>
-            <Link href="/datenschutz">Datenschutz</Link>
+            <Link href="/impressum" className="hover:text-primary">
+              Impressum
+            </Link>
+            <Link href="/datenschutz" className="hover:text-primary">
+              Datenschutz
+            </Link>
           </div>
         </div>
       </div>

@@ -19,8 +19,8 @@ const faqs: FaqItem[] = [
         </p>
         <p className="mt-2">
           <span className="font-semibold">Kein Pflegegrad?</span> – Wir helfen
-          kostenlos bei der Antragstellung und begleiten Sie durch den gesamten
-          Prozess, inklusive Vorbereitung auf den MD-Termin.
+          bei der Antragstellung und begleiten Sie durch den Prozess, inklusive
+          Vorbereitung auf den Termin mit dem Medizinischen Dienst (MD).
         </p>
       </>
     ),
@@ -31,12 +31,12 @@ const faqs: FaqItem[] = [
       <>
         <p>
           Ja. Wir unterstützen beim Erstantrag, bei der Höherstufung, bei der
-          Vorbereitung auf den MD-Termin und beim Ausfüllen aller Unterlagen.
+          Vorbereitung auf den Termin mit dem Medizinischen Dienst (MD) und beim
+          Ausfüllen aller Unterlagen.
         </p>
         <p className="mt-2">
           Dieser Service ist grundsätzlich{" "}
-          <span className="font-semibold">bundesweit</span> möglich – wir
-          beraten telefonisch oder digital.
+          <span className="font-semibold">bundesweit telefonisch</span> möglich.
         </p>
       </>
     ),
@@ -48,7 +48,7 @@ const faqs: FaqItem[] = [
         <p>Die Alltagsbegleitung umfasst zum Beispiel:</p>
         <ul className="mt-2 list-inside list-disc">
           <li>Haushalt &amp; Einkäufe</li>
-          <li>Arztbegleitung</li>
+          <li>Arztbegleitung &amp; Termine</li>
           <li>Spaziergänge &amp; Gespräche</li>
           <li>Unterstützung im Alltag</li>
           <li>Entlastung der Angehörigen</li>
@@ -102,19 +102,12 @@ const faqs: FaqItem[] = [
           Diese Beratungen sollen sicherstellen, dass die Pflege zu Hause gut
           organisiert ist.
         </p>
-        <p className="mt-2">Die Beratung kann stattfinden:</p>
-        <ul className="mt-2 list-inside list-disc">
-          <li>
-            <span className="font-semibold">Vor Ort</span> in Wuppertal &amp;
-            Umgebung (Hausbesuch)
-          </li>
-          <li>
-            <span className="font-semibold">
-              Deutschlandweit per Video-Call
-            </span>{" "}
-            – wenn die Pflegekasse dies akzeptiert
-          </li>
-        </ul>
+        <p className="mt-2">
+          Die Pflegeberatung führen wir als{" "}
+          <span className="font-semibold">Hausbesuch</span> durch –{" "}
+          <span className="font-semibold">regional</span> in Wuppertal &amp;
+          Umgebung, auf Wunsch auch im erweiterten Radius bis Köln.
+        </p>
         <p className="mt-2">
           Wir beraten zu Leistungen, Entlastungsangeboten, Hilfsmitteln und zum
           Pflegealltag – für Sie{" "}
@@ -152,19 +145,21 @@ const faqs: FaqItem[] = [
           Wir unterscheiden zwischen regionalen Leistungen vor Ort und
           Angeboten, die bundesweit möglich sind.
         </p>
+
         <p className="mt-2 font-semibold">Bundesweit (ganz Deutschland):</p>
         <ul className="mt-1 list-inside list-disc">
           <li>Pflegeboxen (Pflegehilfsmittel im Wert von 42 €)</li>
-          <li>Pflegeberatung per Video-Call (sofern akzeptiert)</li>
-          <li>Unterstützung bei Pflegegrad-Anträgen</li>
+          <li>Unterstützung bei Pflegegrad-Anträgen (telefonisch)</li>
           <li>Formulare &amp; Beratung</li>
         </ul>
+
         <p className="mt-3 font-semibold">
-          Nur regional in Wuppertal &amp; Umgebung:
+          Regional in Wuppertal &amp; Umgebung:
         </p>
         <ul className="mt-1 list-inside list-disc">
           <li>Alltagsbegleitung vor Ort</li>
-          <li>Pflegeberatung bei Hausbesuch</li>
+          <li>Pflegeberatung als Hausbesuch</li>
+          <li>Auf Wunsch: erweiterter Radius bis Köln</li>
         </ul>
       </>
     ),
@@ -204,7 +199,7 @@ const faqs: FaqItem[] = [
 ];
 
 export default function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // erste Frage offen
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));

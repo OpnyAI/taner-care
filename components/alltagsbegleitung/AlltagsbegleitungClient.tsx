@@ -89,7 +89,6 @@ export default function AlltagsbegleitungClient() {
     setIsSubmitting(true);
 
     try {
-      // Hier später: API-Call / E-Mail-Versand einbauen
       console.log("Alltagsbegleitung Formular:", form);
 
       setTimeout(() => {
@@ -114,21 +113,34 @@ export default function AlltagsbegleitungClient() {
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">
               Alltagsbegleitung Taner
             </p>
+
             <h1 className="mt-3 text-3xl font-semibold md:text-4xl">
               Alltagsbegleitung – Unterstützung im Alltag, die gut tut.
             </h1>
+
             <p className="mt-4 text-sm text-grayMid md:text-base">
               Wir unterstützen im täglichen Leben, fördern Selbstständigkeit und
               entlasten Angehörige. Mit Zeit für Gespräche, gemeinsame Wege und
               praktische Hilfe im Alltag.
             </p>
+
             <div className="mt-4 grid gap-2 text-sm text-grayMid md:grid-cols-2">
               <div>✓ Haushalt &amp; Einkäufe</div>
               <div>✓ Arztbegleitung &amp; Termine</div>
               <div>✓ Spaziergänge &amp; Gespräche</div>
               <div>✓ Entlastung der Angehörigen</div>
             </div>
+
+            {/* Regionaler Hinweis (konsistent) */}
             <div className="mt-6 rounded-2xl bg-bgLight p-4 text-sm text-grayMid">
+              <p>
+                <span className="font-semibold text-primary">Regional:</span>{" "}
+                Alltagsbegleitung in{" "}
+                <span className="font-semibold">Wuppertal &amp; Umgebung</span>.
+              </p>
+            </div>
+
+            <div className="mt-4 rounded-2xl bg-bgLight p-4 text-sm text-grayMid">
               <p>
                 <span className="font-semibold text-primary">
                   Kosten &amp; Abrechnung:
@@ -162,6 +174,7 @@ export default function AlltagsbegleitungClient() {
           <h2 className="text-2xl font-semibold md:text-3xl">
             Was ist die Alltagsbegleitung?
           </h2>
+
           <p className="mt-4 text-sm text-grayMid md:text-base">
             Wir unterstützen im täglichen Leben, fördern Selbstständigkeit und
             sorgen für Entlastung. Die Alltagsbegleitung ist eine Ergänzung zur
@@ -230,14 +243,15 @@ export default function AlltagsbegleitungClient() {
             </p>
           </div>
 
-          {/* Hinweis-Box */}
+          {/* Hinweis-Box (leicht präziser & konsistent) */}
           <div className="mt-6 rounded-2xl bg-white p-4 text-sm text-grayMid shadow-soft">
             <p className="font-semibold text-primary">
-              Nur regional verfügbar: Wuppertal &amp; Umgebung
+              Regional in Wuppertal &amp; Umgebung
             </p>
             <p className="mt-2">
-              Elberfeld, Barmen, Vohwinkel, Ronsdorf und Cronenberg. Wir prüfen
-              gemeinsam, ob Ihr Wohnort abgedeckt ist.
+              Wir sind in Wuppertal &amp; Umgebung im Einsatz (z. B. Elberfeld,
+              Barmen, Vohwinkel, Ronsdorf, Cronenberg). Ob Ihr Wohnort abgedeckt
+              ist, klären wir kurz telefonisch.
             </p>
           </div>
         </div>

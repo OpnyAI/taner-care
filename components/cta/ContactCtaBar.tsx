@@ -1,9 +1,10 @@
+// components/cta/ContactCtaBar.tsx
 "use client";
 
 import { useState } from "react";
 
-const WHATSAPP_LINK = "https://wa.me/4915201630200"; // +49 1520 1630200 -> 4915201630200
-const PHONE_LINK = "tel:+4915201630200";
+const WHATSAPP_LINK = "https://wa.me/491728804949";
+const PHONE_LINK = "tel:+491728804949";
 
 export default function ContactCtaBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +28,6 @@ export default function ContactCtaBar() {
 
   return (
     <>
-      {/* CTA-Leiste unter dem Seiteninhalt */}
       <section className="border-t border-bgLight bg-white">
         <div className="container flex flex-col items-start justify-between gap-4 py-6 text-sm text-grayMid md:flex-row md:items-center">
           <div>
@@ -44,7 +44,6 @@ export default function ContactCtaBar() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            {/* Direktanruf */}
             <a
               href={PHONE_LINK}
               className="inline-flex items-center justify-center rounded-full bg-bgLight px-4 py-2 text-xs font-semibold text-textDark hover:bg-bgLight/80"
@@ -52,7 +51,6 @@ export default function ContactCtaBar() {
               Jetzt anrufen
             </a>
 
-            {/* WhatsApp mit DSGVO-Popup */}
             <button
               type="button"
               onClick={openModal}
@@ -64,7 +62,6 @@ export default function ContactCtaBar() {
         </div>
       </section>
 
-      {/* DSGVO-Modal für WhatsApp */}
       {isModalOpen && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4">
           <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-soft">
@@ -81,8 +78,8 @@ export default function ContactCtaBar() {
               .
             </p>
             <p className="mt-2 text-xs text-grayMid md:text-sm">
-              Wenn Sie fortfahren, öffnen wir einen Chat mit der TANER CARE
-              GRUPPE in WhatsApp.
+              Wenn Sie fortfahren, öffnen wir einen Chat mit TANER CARE in
+              WhatsApp.
             </p>
 
             <label className="mt-3 flex items-start gap-2 text-xs text-grayMid md:text-sm">

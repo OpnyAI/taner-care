@@ -1,3 +1,4 @@
+// components/contact/ContactForm.tsx
 "use client";
 
 import { useState, FormEvent } from "react";
@@ -57,6 +58,11 @@ export default function ContactForm() {
     if (!form.city.trim()) return "Bitte geben Sie Ihren Wohnort an.";
     if (!form.consentPrivacy)
       return "Bitte akzeptieren Sie die Datenschutzerklärung.";
+
+    if (form.preferredContact === "whatsapp" && !form.consentWhatsApp) {
+      return "Bitte stimmen Sie der Kontaktaufnahme über WhatsApp zu, um WhatsApp als Kontaktweg auszuwählen.";
+    }
+
     return null;
   }
 
@@ -75,7 +81,7 @@ export default function ContactForm() {
 
     try {
       // Hier später: API-Request / E-Mail-Versand einbauen
-      console.log("Kontaktformular TANER CARE GRUPPE:", form);
+      console.log("Kontaktformular TANER CARE:", form);
 
       // Fake-Delay zur Simulation
       setTimeout(() => {
@@ -102,7 +108,6 @@ export default function ContactForm() {
       </p>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
-        {/* Fehlermeldung / Erfolg */}
         {error && (
           <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-800">
             {error}
@@ -118,7 +123,6 @@ export default function ContactForm() {
           </div>
         )}
 
-        {/* Grund der Kontaktaufnahme */}
         <div>
           <label className="text-xs font-semibold text-textDark">
             Worum geht es?*
@@ -182,7 +186,6 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Name */}
         <div>
           <label className="text-xs font-semibold text-textDark">Name*</label>
           <input
@@ -194,7 +197,6 @@ export default function ContactForm() {
           />
         </div>
 
-        {/* Telefon + E-Mail */}
         <div className="grid gap-3 md:grid-cols-2">
           <div>
             <label className="text-xs font-semibold text-textDark">
@@ -222,7 +224,6 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Wohnort */}
         <div>
           <label className="text-xs font-semibold text-textDark">
             Wohnort (Stadt / Ortsteil)*
@@ -240,7 +241,6 @@ export default function ContactForm() {
           </p>
         </div>
 
-        {/* Wie können wir helfen? */}
         <div>
           <label className="text-xs font-semibold text-textDark">
             Wie können wir helfen? (kurze Beschreibung)
@@ -255,7 +255,6 @@ export default function ContactForm() {
           />
         </div>
 
-        {/* Bevorzugte Kontaktart */}
         <div>
           <label className="text-xs font-semibold text-textDark">
             Wie dürfen wir Sie kontaktieren?*
@@ -297,7 +296,6 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* DSGVO / WhatsApp */}
         <div className="space-y-2 rounded-xl bg-bgLight/40 p-3 text-xs text-grayMid">
           <label className="flex items-start gap-2">
             <input
@@ -330,7 +328,6 @@ export default function ContactForm() {
           </label>
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
           disabled={isSubmitting}

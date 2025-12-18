@@ -116,7 +116,7 @@ export default function PflegeberatungClient() {
             <p className="mt-4 text-sm text-grayMid md:text-base">
               Pflegegeld-Empfänger müssen regelmäßige Beratungsbesuche
               nachweisen. Wir führen diese fachgerecht, ruhig und verständlich
-              durch – vor Ort oder per Video.
+              durch – als Hausbesuch vor Ort.
             </p>
             <div className="mt-4 grid gap-2 text-sm text-grayMid md:grid-cols-2">
               <div>✓ Gesetzlich anerkannte Beratungsbesuche</div>
@@ -130,6 +130,17 @@ export default function PflegeberatungClient() {
                 Pflegeberatung ist für Sie{" "}
                 <span className="font-semibold">100 % kostenfrei</span>. Die
                 Abrechnung erfolgt direkt mit der Pflegekasse.
+              </p>
+            </div>
+
+            {/* Regional-Hinweis konsistent */}
+            <div className="mt-4 rounded-2xl bg-white p-4 text-sm text-grayMid shadow-soft">
+              <p className="font-semibold text-primary">
+                Regional verfügbar: Wuppertal &amp; Umgebung
+              </p>
+              <p className="mt-2">
+                Auf Wunsch prüfen wir einen erweiterten Radius bis Köln –
+                abhängig von Terminlage und Entfernung.
               </p>
             </div>
           </div>
@@ -191,13 +202,11 @@ export default function PflegeberatungClient() {
             <li>Dokumentation und Weiterleitung an die Pflegekasse</li>
           </ul>
 
-          <h3 className="mt-6 text-lg font-semibold">
-            Vor Ort oder per Video möglich
-          </h3>
+          <h3 className="mt-6 text-lg font-semibold">Hausbesuch vor Ort</h3>
           <p className="mt-3 text-sm text-grayMid md:text-base">
-            Je nach Situation und gesundheitlichem Zustand kann die Beratung
-            entweder bei Ihnen zuhause oder in Absprache auch per Videoberatung
-            durchgeführt werden – immer gesetzeskonform und anerkannt.
+            Die Pflegeberatung führen wir als Hausbesuch durch. So können wir
+            die Situation realistisch einschätzen und Sie praxisnah
+            unterstützen.
           </p>
 
           {/* 3-Schritte-Box */}
@@ -218,8 +227,8 @@ export default function PflegeberatungClient() {
                 <span className="font-semibold text-textDark">
                   2. Beratungsgespräch.
                 </span>{" "}
-                Wir kommen zu Ihnen nach Hause oder beraten per Video – mit Zeit
-                für alle offenen Fragen.
+                Wir kommen zu Ihnen nach Hause – mit Zeit für alle offenen
+                Fragen.
               </li>
               <li>
                 <span className="font-semibold text-textDark">
@@ -363,11 +372,8 @@ export default function PflegeberatungClient() {
                 className="mt-1 w-full rounded-xl border border-bgLight bg-bgLight/40 px-3 py-2 text-sm outline-none focus:border-primary focus:bg-white"
               >
                 <option value="">Bitte wählen</option>
-                <option value="home">Beratung vor Ort (zu Hause)</option>
-                <option value="video">Videoberatung</option>
-                <option value="flexible">
-                  Egal, wir richten uns nach Ihrer Empfehlung
-                </option>
+                <option value="home">Hausbesuch vor Ort</option>
+                <option value="flexible">Egal, bitte Rücksprache</option>
               </select>
             </div>
 
