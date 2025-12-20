@@ -7,7 +7,6 @@ import Footer from "@/components/layout/Footer";
 import ContactCtaBar from "@/components/cta/ContactCtaBar";
 import MobileStickyCtaBar from "@/components/cta/MobileStickyCtaBar";
 
-/* Google Fonts – Poppins (Header / Überschriften), Open Sans (Fließtext) */
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -20,7 +19,6 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
 });
 
-/* SEO-Grundwerte für die gesamte Website */
 export const metadata: Metadata = {
   metadataBase: new URL("https://taner-care.de"),
   title: {
@@ -51,20 +49,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://taner-care.de/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
-/** Globales LocalBusiness JSON-LD (für Local SEO / Google Rich Results)
- *  Wichtig: Keine Daten erfinden. Daher: keine Straße/PLZ/Öffnungszeiten, solange sie nicht sicher vorliegen.
- */
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeHealthCare"],
+  "@type": "LocalBusiness",
   name: "TANER CARE GRUPPE",
   url: "https://taner-care.de",
   description:
     "Alltagsbegleitung in Wuppertal & Umgebung, Pflegeberatung nach §37.3 SGB XI als Hausbesuch (auf Wunsch bis Köln) sowie Pflegeboxen bundesweit.",
   telephone: "+49 172 8804949",
-  email: ["info@taner-care.de", "dilara@taner-care.de"],
+  email: "info@taner-care.de",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Wuppertal",
@@ -73,7 +78,6 @@ const localBusinessJsonLd = {
   },
   areaServed: [
     { "@type": "City", name: "Wuppertal" },
-    { "@type": "AdministrativeArea", name: "Wuppertal & Umgebung" },
     { "@type": "City", name: "Köln" },
     { "@type": "Country", name: "Deutschland" },
   ],
@@ -92,49 +96,37 @@ const localBusinessJsonLd = {
       availableLanguage: ["de"],
       areaServed: ["DE"],
     },
+    {
+      "@type": "ContactPoint",
+      email: "dilara@taner-care.de",
+      contactType: "customer service",
+      availableLanguage: ["de"],
+      areaServed: ["DE"],
+    },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Leistungen",
     itemListElement: [
       {
-        "@type": "OfferCatalog",
-        name: "Alltagsbegleitung",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            name: "Alltagsbegleitung Taner",
-            url: "https://taner-care.de/alltagsbegleitung",
-          },
-        ],
+        "@type": "Offer",
+        name: "Alltagsbegleitung Taner",
+        url: "https://taner-care.de/alltagsbegleitung",
       },
       {
-        "@type": "OfferCatalog",
-        name: "Pflegeberatung",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            name: "Pflegeberatung nach §37.3 SGB XI",
-            url: "https://taner-care.de/pflegeberatung",
-          },
-        ],
+        "@type": "Offer",
+        name: "Pflegeberatung nach §37.3 SGB XI",
+        url: "https://taner-care.de/pflegeberatung",
       },
       {
-        "@type": "OfferCatalog",
-        name: "Pflegeboxen",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            name: "Pflegeboxen – Pflegehilfsmittel (42 € monatlich)",
-            url: "https://taner-care.de/pflegeboxen",
-          },
-        ],
+        "@type": "Offer",
+        name: "Pflegeboxen – Pflegehilfsmittel (42 € monatlich)",
+        url: "https://taner-care.de/pflegeboxen",
       },
     ],
   },
 };
 
-/* Root Layout – umschließt jede Seite mit Header + Footer */
 export default function RootLayout({
   children,
 }: {
@@ -145,30 +137,20 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${openSans.variable} bg-white text-textDark`}
       >
-        {/* Globales JSON-LD (LocalBusiness) */}
         <Script
           id="localbusiness-jsonld"
           type="application/ld+json"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessJsonLd),
           }}
         />
 
         <Header />
-
-        {/* Main Content – Padding, damit nichts unter dem fixen Header verschwindet */}
         <main className="min-h-[60vh] pt-20 md:pt-24">{children}</main>
-
-        {/* Mobile Sticky CTA-Bar (nur auf Smartphones sichtbar) */}
         <MobileStickyCtaBar />
-
-        {/* Globale CTA-Leiste: Call + WhatsApp (unterhalb des Seiteninhalts, Desktop & Tablet relevant) */}
         <ContactCtaBar />
-
-        {/* Sentinel vor dem Footer – dient als Trigger, um die mobile Sticky-Bar auszublenden */}
         <div id="footer-sentinel" className="h-1 w-full" />
-
         <Footer />
       </body>
     </html>
