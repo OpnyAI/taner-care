@@ -80,14 +80,21 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Hier später: API-Request / E-Mail-Versand einbauen
-      console.log("Kontaktformular TANER CARE:", form);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-      // Fake-Delay zur Simulation
-      setTimeout(() => {
-        setIsSubmitting(false);
+      if (response.ok) {
         setSuccess(true);
-      }, 600);
+      } else {
+        setError(
+          "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+        );
+      }
+
+      setIsSubmitting(false);
     } catch (err) {
       console.error(err);
       setIsSubmitting(false);
