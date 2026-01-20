@@ -42,9 +42,11 @@ export default function ContactForm() {
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) {
-    const { name, value, type, checked } = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+
     setForm((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -86,20 +88,42 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
 
-      if (response.ok) {
-        setSuccess(true);
-      } else {
-        setError(
-          "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
-        );
+      let data: any = null;
+      try {
+        data = await response.json();
+      } catch {
+        // ignore JSON parse errors
       }
 
+      if (!response.ok || !data?.ok) {
+        const msg =
+          data?.error ||
+          "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.";
+        setError(msg);
+        setIsSubmitting(false);
+        return;
+      }
+
+      setSuccess(true);
       setIsSubmitting(false);
+
+      // Optional: Formular nach Erfolg zurücksetzen
+      setForm({
+        reason: "alltagsbegleitung",
+        name: "",
+        phone: "",
+        email: "",
+        city: "",
+        message: "",
+        preferredContact: "telefon",
+        consentPrivacy: false,
+        consentWhatsApp: false,
+      });
     } catch (err) {
       console.error(err);
       setIsSubmitting(false);
       setError(
-        "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+        "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
       );
     }
   }
